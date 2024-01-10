@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 import joblib
 
-loeaded_rf_model = joblib.load("ref_model.joblib")
+loaded_rf_model = joblib.load("./ML_Model/rf_model.joblib")
 
 def index(request):
     if request.method == 'POST':
@@ -35,7 +35,7 @@ def index(request):
                    float(Proline),
         ]]
 
-        our_labels = loeaded_rf_model.predict(labels)
+        our_labels = loaded_rf_model.predict(labels)
 
         if our_labels[0]<= 400:
             wine_quality = "A Poor Quality Wine"
